@@ -3,85 +3,55 @@ define ('ROOT', dirname(__DIR__));
 require '../Autoloader.php';
 Autoloader::register();
 
+use Model\DbInterface;
+use Model\AnimalModel;
 use Database\createDatabase;
 
+if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) {
+    $model = new AnimalModel();
+    $animal = $model->findBy(["name" => "test"]);
+    include ROOT . '/views/indexView.php';
 
-$db = new createDatabase();
-// $db->create();
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'new') {
+    include ROOT . '/views/newView.php';
 
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'save') {
+    $model = new DbInterface();
+    $animal = $model->save($_POST, 'animal');
+    header("Location: index.php?page=home");
 
-$db->createTable('animal', ['id' => 'INT PRIMARY KEY NOT NULL AUTO_INCREMENT',
-    'nom' => 'VARCHAR(100) NOT NULL',
-    'type' => 'INT NOT NULL',
-    'race' => 'VARCHAR(100) NOT NULL',
-    'taille' => 'INT NOT NULL',
-    'poid' => 'INT NOT NULL',
-    'age' => 'INT NOT NULL'
-]);
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'single') {
+    $model = new AnimalModel();
+    $animal = $model->find($_GET["id"]);
+    include ROOT . '/views/singleView.php';
 
-$db->createTable('user', ['id' => 'INT PRIMARY KEY NOT NULL AUTO_INCREMENT',
-    'nom' => 'VARCHAR(100) NOT NULL',
-    'prenom' => 'VARCHAR(100) NOT NULL',
-    'adresse' => 'VARCHAR(100) NOT NULL',
-    'codePostal' => 'VARCHAR(10) NOT NULL',
-    'mail' => 'VARCHAR(100) NOT NULL',
-    'telephone' => 'VARCHAR(100) NOT NULL',
-    'role' => 'VARCHAR(100) NOT NULL'
-]);
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'modify') {
+    $model = new AnimalModel();
+    $animal = $model->find($_GET["id"]);
+    include ROOT . '/views/modifyView.php';
 
-$db->createTable('product', ['id' => 'INT PRIMARY KEY NOT NULL AUTO_INCREMENT',
-    'nom' => 'VARCHAR(100) NOT NULL',
-    'type' => 'INT NOT NULL',
-    'animal' => 'VARCHAR(100) NOT NULL',
-    'prix' => 'VARCHAR(100) NOT NULL',
-    'stock' => 'VARCHAR(100) NOT NULL'
-]);
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'saveModification') {
+    $model = new DbInterface();
+    $animal = $model->update('animal', $_POST, $_GET["id"]);
+    header("Location: index.php?page=single&id=". $_GET["id"]);
 
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'delete') {
+    $model = new DbInterface();
+    $animal = $model->delete('animal', $_GET["id"]);
+    header("Location: index.php?page=home");
 
-$db->createTable('dons',
-    ["id" => "INT PRIMARY KEY NOT NULL AUTO_INCREMENT",
-        "user_id" => "INT NOT NULL",
-        "animal_id" => "INT NOT NULL",
-        "date" => 'DATETIME NOT NULL'
-    ],
-    ['user_id' => 'user(id)',
-        'animal_id' => 'animal(id)']
-);
-
-$db->createTable('commande',
-    ["id" => "INT PRIMARY KEY NOT NULL AUTO_INCREMENT",
-        "user_id" => "INT NOT NULL",
-        "dateCommande" => 'DATETIME NOT NULL',
-        "montantTotal" => 'VARCHAR(100) NOT NULL',
-        "etat" => 'VARCHAR(100) NOT NULL',
-    ],
-    ['user_id' => 'user(id)']
-);
-
-$db->createTable('ligneCommande',
-    ["id" => "INT PRIMARY KEY NOT NULL AUTO_INCREMENT",
-        "commande_id" => "INT NOT NULL",
-        "product_id" => "INT NOT NULL",
-        "quantite" => 'INT NOT NULL',
-        "montant" => 'VARCHAR(100) NOT NULL'
-    ],
-    ['commande_id' => 'commande(id)',
-    'product_id' => 'product(id)' ]
-);
-
-
-$db->createTable('reservation',
-    ["id" => "INT PRIMARY KEY NOT NULL AUTO_INCREMENT",
-        "user_id" => "INT NOT NULL",
-        "animal_id" => "INT NOT NULL",
-        "dateReservation" => 'DATETIME NOT NULL',
-        "dateRdv" => 'DATETIME NOT NULL'
-    ],
-    ['user_id' => 'user(id)',
-        'animal_id' => 'animal(id)']
-);
+}
 
 
 
 
-include '../views/indexView.php';
+
+
+
+
+
+
+
+
+
+
