@@ -4,7 +4,6 @@ namespace Database;
 
 use Database\Database;
 
-
 class createDatabase extends Database{
 
 
@@ -18,7 +17,7 @@ class createDatabase extends Database{
     public function createTable($table, $champs = [], $foreigns = []){
 
         $statement = 'CREATE TABLE IF NOT EXISTS '. $table . '(';
-
+        
         foreach ($champs as $key => $value) {
             $statement .= $key . ' ' . $value . ',';
         }

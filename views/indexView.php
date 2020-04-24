@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +17,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="../views/indexView.php">Notre association </a>
+                <a class="nav-link" href="">Notre association </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../views/newView.php">Animaux</a>
+                <a class="nav-link" href="">Animaux</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../views/modifyView.php">Produits</a>
+                <a class="nav-link" href="">Produits</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../views/singleView.php">Faire un don</a>
+                <a class="nav-link" href="">Faire un don</a>
             </li>
         </ul>
     </div>
@@ -33,11 +34,11 @@
 
 <div class="affichage mt-5 justify-content-around">
 
-    <?php foreach ($animaux as $animal) : ?>
+    <?php foreach ($animals as $animal) : ?>
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://fakeimg.pl/300x200/" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title"><?= $animal->name ?></h5>
+                <h5 class="card-title"><?= $animal->nom ?></h5>
                 <div class="card-text">
                     <p>Type: <?= $animal->type ?></p>
                     <p>Race: <?= $animal->race ?></p>

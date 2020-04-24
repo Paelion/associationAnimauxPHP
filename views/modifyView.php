@@ -16,16 +16,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item ">
-                <a class="nav-link" href="../views/indexView.php">Notre association </a>
+                <a class="nav-link" href="">Notre association </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../views/newView.php">Animaux</a>
+                <a class="nav-link" href="">Animaux</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="../views/modifyView.php">Produits</a>
+                <a class="nav-link" href="">Produits</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../views/singleView.php">Faire un don</a>
+                <a class="nav-link" href="">Faire un don</a>
             </li>
         </ul>
     </div>

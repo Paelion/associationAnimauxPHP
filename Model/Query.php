@@ -4,7 +4,6 @@ namespace Model;
 
 use Model\Model;
 
-
 class Query extends Model
 {
 
@@ -21,24 +20,24 @@ class Query extends Model
     public function find($id, $order = ["id" => 'ASC'])
     {
         return $this->query('SELECT * FROM ' . $this->model . ' WHERE id=' . $id
-            . $this->createOrder($order)
-            , true);
+                            . $this->createOrder($order)
+                            , true);
     }
 
     public function findOneBy($id, $criteria = [], $order = ["id" => 'ASC'])
     {
         return $this->query('SELECT * FROM '. $this->model .
-            $this->createWhere($criteria)
-            . $this->createOrder($order)
-            , true);
+                                $this->createWhere($criteria)
+                                . $this->createOrder($order)
+                                , true);
     }
 
     public function findBy($criteria = [], $order = ["id" => 'ASC'])
     {
         return $this->query('SELECT * FROM '. $this->model .
-            $this->createWhere($criteria)
-            . $this->createOrder($order)
-            , false);
+                                $this->createWhere($criteria)
+                                . $this->createOrder($order)
+                                , false);
     }
 
 }

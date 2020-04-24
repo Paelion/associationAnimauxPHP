@@ -4,7 +4,6 @@ namespace Model;
 
 use Model\Model;
 
-
 class DbInterface extends Model
 {
     public function save($data, $class){
