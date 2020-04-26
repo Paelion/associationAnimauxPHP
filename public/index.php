@@ -32,6 +32,9 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
     $animal = $model->find($_GET["id"]);
     include ROOT . '/views/modifyView.php';
 
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'panier') {
+    include ROOT . '/views/panierView.php';
+
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'saveModification') { 
     $model = new DbInterface();
     $animal = $model->update('animal', $_POST, $_GET["id"]);
