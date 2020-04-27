@@ -6,6 +6,7 @@ Autoloader::register();
 use Model\DbInterface;
 use Model\AnimalModel;
 use Model\ProductModel;
+use Model\PanierModel;
 use Database\createDatabase;
 
 
@@ -26,6 +27,11 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
     $products = $model->findAll();
 
     include ROOT . '/views/productView.php';
+} elseif ((isset($_GET["page"]) && $_GET["page"] == 'panier') || !isset($_GET["page"])) {
+    $model= new PanierModel();
+    $commandes= $model->findAll();
+    include ROOT . '/views/panierView.php';
+
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'new') {
     include ROOT . '/views/newView.php';
 
@@ -63,9 +69,6 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
     $model = new ProductModel();
     $product = $model->find($_GET["id"]);
     include ROOT . '/views/modifyProductsView.php';
-
-} elseif (isset($_GET["page"]) && $_GET["page"] == 'panier') {
-    include ROOT . '/views/panierView.php';
 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'saveModification') {
     $model = new DbInterface();
