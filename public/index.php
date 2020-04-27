@@ -5,6 +5,7 @@ Autoloader::register();
 
 use Model\DbInterface;
 use Model\AnimalModel;
+use Model\ProductModel;
 use Database\createDatabase;
 
 
@@ -14,7 +15,19 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
     //$animals = [];
     include ROOT . '/views/indexView.php';
 
-} elseif (isset($_GET["page"]) && $_GET["page"] == 'new') {  
+} elseif ((isset($_GET["page"]) && $_GET["page"] == 'animaux') || !isset($_GET["page"])){
+    $model = new AnimalModel();
+    $animals = $model->findAll();
+    //$animals = [];
+    include ROOT . '/views/animauxView.php';
+
+}elseif ((isset($_GET["page"]) && $_GET["page"] == 'produits') || !isset($_GET["page"])){
+    $model = new ProductModel();
+    $products =  $model->findAll();
+
+    include ROOT . '/views/produitsView.php';
+}
+elseif (isset($_GET["page"]) && $_GET["page"] == 'new') {
     include ROOT . '/views/newView.php';
 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'save') {  
@@ -25,9 +38,16 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'single') {  
     $model = new AnimalModel();
     $animal = $model->find($_GET["id"]);
+
     include ROOT . '/views/singleView.php';
 
-} elseif (isset($_GET["page"]) && $_GET["page"] == 'modify') { 
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'singleProduct') {
+    $model = new ProductModel();
+    $product = $model->find($_GET["id"]);
+
+    include ROOT . '/views/SingleProductView.php';
+
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'modify') {
     $model = new AnimalModel();
     $animal = $model->find($_GET["id"]);
     include ROOT . '/views/modifyView.php';
