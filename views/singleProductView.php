@@ -23,7 +23,7 @@
                 <a class="nav-link" href="../public/index.php?page=animaux">Animaux</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../public/index.php?page=produits">Produits</a>
+                <a class="nav-link" href="../public/index.php?page=product">Produits</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../public/index.php?page=dons">Faire un don</a>
@@ -44,8 +44,8 @@
                 <p>Prix: <?= $product->prix ?>€</p>
                 <p>Stock: <?= $product->stock ?></p>
             </div>
-            <a href="../public/index.php?page=modify&id=<?= $product->id ?>" class="btn btn-primary">Modifier</a>
-            <a href="../public/index.php?page=delete&id=<?= $product->id ?>" class="btn btn-danger">Supprimer</a>
+            <a href="../public/index.php?page=modifyProduct&id=<?= $product->id ?>" class="btn btn-primary">Modifier</a>
+            <a href="../public/index.php?page=deleteProduct&id=<?= $product->id ?>" class="btn btn-danger">Supprimer</a>
         </div>
     </div>
 </div>
