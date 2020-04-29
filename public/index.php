@@ -11,8 +11,11 @@ use Database\createDatabase;
 
 if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) {
     $model = new AnimalModel();
-    $animals = $model->findAll();
+    $animal = $model->findAll();
     //$animals = [];
+
+    $modelProduct = new ProductModel();
+    $product = $modelProduct->findAll();
     include ROOT . '/views/indexView.php';
 
 } elseif ((isset($_GET["page"]) && $_GET["page"] == 'animaux') || !isset($_GET["page"])) {
@@ -35,14 +38,14 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
 }elseif (isset($_GET["page"]) && $_GET["page"] == 'save') {
     $model = new DbInterface();
     $animals = $model->save($_POST, 'animal');
-    header("Location: index.php?page=product");
+    header("Location: index.php?page=animaux");
 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'saveProduct') {
     $model = new DbInterface();
     $products = $model->save($_POST, 'product');
     header("Location: index.php?page=product");
 
-} elseif (isset($_GET["page"]) && $_GET["page"] == 'single') {
+}  elseif (isset($_GET["page"]) && $_GET["page"] == 'single') {
     $model = new AnimalModel();
     $animal = $model->find($_GET["id"]);
 
@@ -54,7 +57,13 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
 
     include ROOT . '/views/singleProductView.php';
 
-} elseif (isset($_GET["page"]) && $_GET["page"] == 'modify') {
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'reservation') {
+    $model = new AnimalModel();
+    $animal = $model->find($_GET["id"]);
+
+    include ROOT . '/views/reservationView.php';
+
+}elseif (isset($_GET["page"]) && $_GET["page"] == 'modify') {
     $model = new AnimalModel();
     $animal = $model->find($_GET["id"]);
     include ROOT . '/views/modifyView.php';

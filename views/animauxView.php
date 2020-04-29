@@ -23,7 +23,7 @@
                 <a class="nav-link active" href="../public/index.php?page=animaux">Animaux</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../public/index.php?page=produits">Produits</a>
+                <a class="nav-link" href="../public/index.php?page=product">Produits</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../public/index.php?page=dons">Faire un don</a>
@@ -48,6 +48,7 @@
 
                 </div>
                 <a href="index.php?page=single&id=<?= $animal->id ?>" class="btn btn-primary">Go somewhere</a>
+                <a href="index.php?page=reservation&id=<?= $animal->id ?>" class="btn btn-primary">Réserver</a>
             </div>
         </div>
     <?php endforeach ?>

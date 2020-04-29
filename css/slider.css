@@ -1,0 +1,40 @@
+.slideshow {
+    margin: 50px;
+    width: 60vw;
+    display: block;
+}
+
+.slideshow--wrapper > img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+.slideshow--wrapper {
+    display: flex;
+}
+
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+
+.prevBtn  {
+    background: url(../img/back.png)  no-repeat center ;
+    display: block;
+    width: 10px;
+    padding: 50px;
+    background-size: 50%;
+}
+.nextBtn  {
+    background: url(../img/next.png)  no-repeat center;
+    display: block;
+    width: 10px;
+    padding: 50px;
+    background-size: 50%;
+}
+
+.button a:hover {
+    transform: scale(1.1);
+}
