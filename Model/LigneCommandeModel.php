@@ -5,7 +5,8 @@ namespace Model;
 use Model\Query;
 
 
-class PanierModel extends Query
+
+class LigneCommandeModel extends Query
 {
 
 }

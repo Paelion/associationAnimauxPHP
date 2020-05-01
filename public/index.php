@@ -6,7 +6,7 @@ Autoloader::register();
 use Model\DbInterface;
 use Model\AnimalModel;
 use Model\ProductModel;
-use Model\PanierModel;
+use Model\CommandeModel;
 use Database\createDatabase;
 
 
@@ -28,9 +28,9 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
 
     include ROOT . '/views/productView.php';
 } elseif ((isset($_GET["page"]) && $_GET["page"] == 'panier') || !isset($_GET["page"])) {
-    $model= new PanierModel();
-    $commandes= $model->findAll();
-    include ROOT . '/views/panierView.php';
+    $model = new CommandeModel();
+    $commandes = $model->findAll();
+    include ROOT . '/views/commandeView.php';
 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'new') {
     include ROOT . '/views/newView.php';
@@ -89,5 +89,7 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
     $model = new DbInterface();
     $product = $model->delete('product', $_GET["id"]);
     header("Location: index.php?page=product");
+
+} elseif (isset($_GET["page"]) && $_GET["page"] == 'saveLigneCommande'){
 
 }
