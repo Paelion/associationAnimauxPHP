@@ -93,3 +93,11 @@ if ((isset($_GET["page"]) && $_GET["page"] == 'home') || !isset($_GET["page"])) 
 } elseif (isset($_GET["page"]) && $_GET["page"] == 'saveLigneCommande'){
 
 }
+/*
+ * le client est sur ma page avec les produits
+ * -> il sélectionne le produit qu'il veut, il clic sur un btn ajouter au panier par exemple
+ * -> il sélectionne la quantité
+ * -> puis c'est dans son panier
+ * une fois qu'il a choisit tous ces articles, il va sur la page panier ou on voit tous les articles, il paye
+ * -> Une commande se créé dans la Db puis on enregistre tous les produits acheté dans "ligne commande" en rattachant ça à la "commande" qu'on vient de créer
+ */
