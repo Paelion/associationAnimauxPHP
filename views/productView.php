@@ -28,6 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../public/index.php?page=dons">Faire un don</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../public/index.php?page=panier">Panier</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -48,7 +51,7 @@
                     <p>Stock: <?= $product->stock ?></p>
 
                 </div>
-                <a href="index.php?page=singleProduct&id=<?= $product->id ?>" class="btn btn-primary">Go somewhere</a>
+                <a href="index.php?page=singleProduct&id=<?= $product->id ?>" class="btn btn-danger">Voir plus</a>
             </div>
         </div>
     <?php endforeach ?>

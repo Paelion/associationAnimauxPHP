@@ -14,6 +14,7 @@ class Model extends Database{
             $class = explode('\\', get_class($this));
             $class = end($class);
             $this->model = strtolower(str_replace('Model', "", $class));
+
         }
 
         parent::__construct();
